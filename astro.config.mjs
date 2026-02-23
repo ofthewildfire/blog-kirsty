@@ -180,6 +180,7 @@ image: {
     }
   },
   vite: {
+    assetsInclude: ['**/*.base', '**/*.home', '**/*.base'],
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url)),

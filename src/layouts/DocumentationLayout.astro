@@ -12,7 +12,7 @@ import Lightbox from '@/components/Lightbox.astro';
 import ImageWrapper from '@/components/ImageWrapper.astro';
 import DocsSidebar from '@/components/DocsSidebar.astro';
 import Icon from '@/components/Icon.astro';
-import { shouldShowContent, getAdjacentDocs } from '@/utils/markdown';
+import { shouldShowContent, getAdjacentDocs, formatDate } from '@/utils/markdown';
 
 export interface Props {
   documentation: Docs;
@@ -217,18 +217,10 @@ const structuredData = {
                   )}
                   <time datetime={documentation.data.lastModified.toISOString()} class="text-xs">
                     <span class="hidden sm:inline">
-                      Updated {documentation.data.lastModified.toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                      })}
+                      Updated {formatDate(documentation.data.lastModified)}
                     </span>
                     <span class="sm:hidden">
-                      Updated {documentation.data.lastModified.toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'short',
-                        day: 'numeric'
-                      })}
+                      Updated {formatDate(documentation.data.lastModified)}
                     </span>
                   </time>
                 </>

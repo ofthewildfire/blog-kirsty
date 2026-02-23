@@ -60,7 +60,8 @@
       "creationMode": "file",
       "indexFileName": "index",
       "ignoreSubfolders": false,
-      "enableUnderscorePrefix": false
+      "enableUnderscorePrefix": false,
+      "modifiedDateField": "lastModified"
     }
   ],
   "migrationCompleted": true,
