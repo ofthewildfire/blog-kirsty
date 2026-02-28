@@ -1537,3 +1537,8 @@ body.bases-cms-property-color-custom .bases-cms .property-content {
 	font-weight: 600;
 	border-bottom: none !important;
 }
+
+/* Titles view: list only */
+.bases-titles-view {
+	min-height: 0;
+}
