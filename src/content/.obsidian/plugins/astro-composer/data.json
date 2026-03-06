@@ -76,6 +76,7 @@
   "draftProperty": "draft",
   "draftLogic": "true-is-draft",
   "publishDateField": "date",
+  "renameOnTitleClick": true,
   "updateModifiedDate": true,
   "modifiedDateField": "lastModified",
   "integratedTerminalShell": "powershell",
