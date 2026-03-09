@@ -1479,6 +1479,8 @@ const scrollbarClass = siteConfig.hideScrollBar ? '' : 'show-scrollbars';
     // Favicon is now handled by CSS media queries - no JavaScript needed
 
     // FALLBACK: Use MutationObserver to detect when comments container appears
+    // Also re-run image galleries when content changes (e.g. Vite HMR on post edit) so text/caption updates appear
+    let contentChangeTimeout = null;
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (mutation.type === 'childList') {
@@ -1495,6 +1497,15 @@ const scrollbarClass = siteConfig.hideScrollBar ? '' : 'show-scrollbars';
               }
             }
           });
+          // Content was replaced (e.g. HMR); re-run gallery script so new markup is transformed
+          if (typeof window['initializeImageGalleries'] === 'function') {
+            clearTimeout(contentChangeTimeout);
+            contentChangeTimeout = setTimeout(() => {
+              window['initializeImageGalleries']();
+              // Second run after a short delay in case HMR inserted content in two steps
+              setTimeout(() => window['initializeImageGalleries'](), 200);
+            }, 100);
+          }
         }
       });
     });

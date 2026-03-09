@@ -23,7 +23,8 @@ import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import { siteConfig } from './src/config.ts';
 import swup from '@swup/astro';
-import { fileURLToPath } from 'url';
+import refreshContentOnChange from './src/integrations/refresh-content-on-change.ts';
+import { fileURLToPath } from 'node:url';
 
 // Deployment platform configuration
 const DEPLOYMENT_PLATFORM = process.env.DEPLOYMENT_PLATFORM || 'netlify';
@@ -109,6 +110,7 @@ image: {
     }]
   },
   integrations: [
+    refreshContentOnChange(),
     tailwind(),
     sitemap(),
     mdx(),
@@ -117,7 +119,7 @@ image: {
       animationClass: 'transition-swup-',
       containers: ['#swup-container'],
       smoothScrolling: false,
-      cache: true,
+      cache: process.env.NODE_ENV === 'production', // off in dev so post edits show immediately
       preload: true,
       accessibility: false,
       updateHead: true,
@@ -199,12 +201,12 @@ image: {
       middlewareMode: false,
       hmr: true,
       watch: {
-      ignored: ['**/.obsidian/**', '**/_bases/**', '**/bases/**'],
-        usePolling: process.platform === 'win32', // Use polling on Windows for better file watching
+        ignored: ['**/.obsidian/**', '**/_bases/**', '**/bases/**'],
+        usePolling: process.platform === 'win32',
         interval: 1000
       },
       headers: {
-        'Cache-Control': 'no-cache, no-store, must-revalidate'
+        'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0'
         // CSP headers are handled by src/middleware.ts for all routes
       }
     },
