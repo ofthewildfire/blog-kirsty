@@ -447,6 +447,7 @@ The theme automatically synchronizes assets from content folders to the public d
 # Development
 pnpm run dev              # Start development server
 pnpm run build            # Build for production
+pnpm run update           # Update theme to latest release (keeps your content)
 pnpm run sync-images      # Sync images from content to public
 pnpm run process-aliases  # Process content aliases
 pnpm run check-images     # Check for missing images

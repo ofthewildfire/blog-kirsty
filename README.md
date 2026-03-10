@@ -127,6 +127,16 @@ This downloads the latest template, removes dev-only files, and installs depende
    pnpm build
    ```
 
+### Updating the theme
+
+To pull the latest theme release (framework files, Astro, config) while keeping your content and assets:
+
+```bash
+pnpm run update
+```
+
+This downloads the latest release from GitHub, replaces framework files, restores your `src/content` and profile/favicon assets, then runs `pnpm install`. After updating, open Obsidian and use **Astro Modular Settings → Apply all settings** so your saved settings are written to the new `config.ts` if needed.
+
 ### Configuration
 
 Edit `src/config.ts` to customize your site - change the theme, enable/disable features, and configure all settings.
