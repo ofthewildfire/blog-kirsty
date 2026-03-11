@@ -265,7 +265,9 @@ import Icon from './Icon.astro';
     const width = container.offsetWidth;
     const height = container.offsetHeight;
     const radiusForce = 300;
-    let wasDragged = false;
+    let dragStartX = 0;
+    let dragStartY = 0;
+    const CLICK_DISTANCE = 5; // px threshold to distinguish click from drag
     let isDraggingNode = false;
 
     // Clear container
@@ -367,7 +369,8 @@ import Icon from './Icon.astro';
           d3
             .drag<SVGGElement, GraphNode>()
             .on("start", function (event) {
-              wasDragged = false;
+              dragStartX = event.x;
+              dragStartY = event.y;
               isDraggingNode = true;
               if (svg) svg.style('cursor', 'default');
               if (!event.active) simulation!.alphaTarget(0.1).restart();
@@ -375,35 +378,37 @@ import Icon from './Icon.astro';
               event.subject.fy = event.subject.y;
             })
             .on("drag", function (event, d) {
-              wasDragged = true;
               d.fx = event.x;
               d.fy = event.y;
             })
-            .on("end", function (event) {
+            .on("end", function (event, d) {
               isDraggingNode = false;
               if (svg) svg.style('cursor', 'default');
               if (!event.active) simulation!.alphaTarget(0);
               event.subject.fx = null;
               event.subject.fy = null;
-            }) as any,
-        )
-        .on("click", (event, d) => {
-          if (!wasDragged && d.slug) {
-            // Close modal first
-            closeModal();
-            
-            // Use Swup for navigation if available
-            if ((window as any).swup) {
-              // Ensure local graph is reset before navigation
-              if ((window as any).resetLocalGraph) {
-                (window as any).resetLocalGraph();
+
+              // Navigate on click (no drag movement). Uses distance threshold
+              // because D3 drag fires for even 1px of movement. Handled here
+              // instead of a "click" listener because D3 drag calls
+              // stopImmediatePropagation on mouseup in Chrome.
+              const dx = event.x - dragStartX;
+              const dy = event.y - dragStartY;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+              if (dist < CLICK_DISTANCE && d.slug) {
+                closeModal();
+
+                if ((window as any).swup) {
+                  if ((window as any).resetLocalGraph) {
+                    (window as any).resetLocalGraph();
+                  }
+                  (window as any).swup.navigate(`/posts/${d.slug}`);
+                } else {
+                  window.location.href = `/posts/${d.slug}`;
+                }
               }
-              (window as any).swup.navigate(`/posts/${d.slug}`);
-            } else {
-              window.location.href = `/posts/${d.slug}`;
-            }
-          }
-        });
+            }) as any,
+        );
         
       // Build neighbor map for hover effects
       const neighbors = new Map<string, Set<string>>();
@@ -419,124 +424,38 @@ import Icon from './Icon.astro';
 
       // Add hover effects
       nodeGroup
-        .on("mouseover", function (event, d) {
+        .on("mouseover", function (_event, d) {
           const connected = neighbors.get(d.id) ?? new Set();
           connected.add(d.id);
 
-          // Bring the hovered node group to the front
-          const element = this as SVGGElement;
-          if (element.parentNode) {
-            element.parentNode.appendChild(element);
-          }
-
-          link
-            .transition()
-            .duration(150)
+          link.transition().duration(150)
             .attr("stroke", (l: any) =>
-              (typeof l.source === 'object' ? l.source.id : l.source) === d.id || 
+              (typeof l.source === 'object' ? l.source.id : l.source) === d.id ||
               (typeof l.target === 'object' ? l.target.id : l.target) === d.id
-                ? colors.tagFill
-                : colors.linkStroke,
-            )
+                ? colors.tagFill : colors.linkStroke)
             .attr("stroke-opacity", (l: any) =>
-              (typeof l.source === 'object' ? l.source.id : l.source) === d.id || 
-              (typeof l.target === 'object' ? l.target.id : l.target) === d.id ? 0.8 : 0.1,
-            );
+              (typeof l.source === 'object' ? l.source.id : l.source) === d.id ||
+              (typeof l.target === 'object' ? l.target.id : l.target) === d.id ? 0.8 : 0.1);
 
-          nodeGroup
-            .selectAll<SVGCircleElement, GraphNode>("circle")
-            .attr("fill-opacity", (n) => (connected.has(n.id) ? 1 : 0.3))
-            .attr("fill", (n) => {
-              if (n.id === d.id) return colors.tagFill;
-              return colors.linkStroke;
-            });
+          nodeGroup.selectAll<SVGCircleElement, GraphNode>("circle")
+            .attr("fill-opacity", (n) => connected.has(n.id) ? 1 : 0.3)
+            .attr("fill", (n) => n.id === d.id ? colors.tagFill : colors.linkStroke);
 
-          // Handle label visibility and sizing based on zoom level
-          const currentTransform = d3.zoomTransform(svg.node() as Element);
-          const scale = currentTransform.k;
-          const labelThreshold = 0.6;
-          
-          if (scale < labelThreshold) {
-            // When zoomed out, only show the hovered node's label at large size
-            labels
-              .transition()
-              .duration(150)
-              .style("opacity", (n) => (n.id === d.id ? 1 : 0))
-              .attr("font-size", (n) => n.id === d.id ? `${18 / scale}px` : "12px")
-              .attr("dy", (n) => n.id === d.id ? `${n.radius + 30}px` : `${n.radius + 12}px`);
-          } else {
-            // When zoomed in, check if we need to enlarge hovered text
-            const minHoverSize = 18; // Minimum size for hovered text
-            const currentTextSize = 12 * scale; // Current effective text size
-            
-            labels
-              .transition()
-              .duration(150)
-              .style("opacity", (n) => {
-                if (n.id === d.id && currentTextSize < minHoverSize) {
-                  // Hovered node with enlarged text gets full opacity
-                  return 1;
-                } else if (connected.has(n.id)) {
-                  // Connected nodes get slightly faded when text is small
-                  return currentTextSize < minHoverSize ? 0.6 : 1;
-                } else {
-                  // Non-connected nodes get very faded
-                  return 0.1;
-                }
-              })
-              .attr("font-size", (n) => {
-                if (n.id === d.id && currentTextSize < minHoverSize) {
-                  // Hovered node needs larger text
-                  return `${minHoverSize / scale}px`;
-                }
-                return "12px";
-              })
-              .attr("dy", (n) => {
-                if (n.id === d.id && currentTextSize < minHoverSize) {
-                  // Hovered node with enlarged text needs more spacing
-                  return `${n.radius + 30}px`;
-                }
-                return `${n.radius + 12}px`;
-              });
-          }
+          labels.transition().duration(150)
+            .style("opacity", (n) => connected.has(n.id) ? 1 : 0.1);
         })
         .on("mouseout", function () {
-          link
-            .transition()
-            .duration(150)
+          link.transition().duration(150)
             .attr("stroke", colors.linkStroke)
             .attr("stroke-opacity", 0.6);
 
-          nodeGroup
-            .selectAll<SVGCircleElement, GraphNode>("circle")
+          nodeGroup.selectAll<SVGCircleElement, GraphNode>("circle")
             .attr("fill", colors.linkStroke)
             .attr("fill-opacity", 1);
 
-          // Restore label visibility and sizing based on zoom level
           const currentTransform = d3.zoomTransform(svg.node() as Element);
-          const scale = currentTransform.k;
-          const labelThreshold = 0.6;
-          
-          if (scale < labelThreshold) {
-            // When zoomed out, hide all labels and reset font properties
-            labels
-              .transition()
-              .duration(150)
-              .style("opacity", 0)
-              .attr("font-size", "12px")
-              .attr("dy", (d) => `${d.radius + 12}px`);
-          } else {
-            // When zoomed in, show all labels with appropriate opacity based on text size
-            const minHoverSize = 18; // Same threshold as hover logic
-            const currentTextSize = 12 * scale; // Current effective text size
-            
-            labels
-              .transition()
-              .duration(150)
-              .style("opacity", currentTextSize < minHoverSize ? 0.6 : 1) // Faded when text is small
-              .attr("font-size", "12px")
-              .attr("dy", (d) => `${d.radius + 12}px`);
-          }
+          labels.transition().duration(150)
+            .style("opacity", currentTransform.k < 0.6 ? 0 : 0.6);
         });
 
       // Create circles
