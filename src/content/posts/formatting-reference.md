@@ -15,7 +15,7 @@ imageOG: false
 hideCoverImage: false
 hideTOC: false
 targetKeyword:
-draft: false
+draft: true
 ---
 This post demonstrates all the markdown, extended markdown, and other embed features available in Astro Modular. Use this as both a reference guide and a showcase of what's possible.
 
@@ -201,7 +201,7 @@ Here's an [external link](https://obsidian.md).
 
 You can create internal links using double brackets (wikilinks) or with standard markdown. 
 
-For example: [[getting-started|Getting Started]] or [Astro Suite Obsidian Vault Guide (Astro Modular)](vault-cms-guide.md).
+For example: [[hello-world|Getting Started]] or [Astro Suite Obsidian Vault Guide (Astro Modular)](vault-cms-guide.md).
 
 ```markdown
 For example: [[getting-started|Getting Started]] or [Obsidian Embeds Demo](obsidian-embeds-demo).
@@ -211,10 +211,10 @@ Here's an internal link with an anchor: [[sample-folder-based-post/index#Benefit
 
 Here's the same internal link with an anchor formatted in 4 different ways (both Obsidian and standard Astro syntax work):
 
-[Choose Your Workflow](posts/getting-started.md#Choose%20Your%20Workflow)
-[Choose Your Workflow](posts/getting-started#Choose%20Your%20Workflow)
-[[posts/getting-started#Choose Your Workflow|Choose Your Workflow]]
-[Choose Your Workflow](/posts/getting-started#choose-your-workflow)
+[Choose Your Workflow](hello-world.md#Choose%20Your%20Workflow)
+[Choose Your Workflow](hello-world.md#Choose%20Your%20Workflow)
+[[hello-world#Choose Your Workflow|Choose Your Workflow]]
+[Choose Your Workflow](hello-world.md#choose-your-workflow)
 
 
 Here's a relative link: [Obsidian Embeds Demo](obsidian-embeds-demo.md)

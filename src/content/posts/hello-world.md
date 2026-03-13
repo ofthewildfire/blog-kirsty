@@ -1,5 +1,5 @@
 ---
-title: Getting Started
+title: Hello World 🌟
 date: 2025-09-06
 description: Quick start guide for Astro Modular - get your blog running in minutes.
 tags:
@@ -15,8 +15,11 @@ hideCoverImage: false
 hideTOC: false
 targetKeyword: astro blog quick start
 draft: false
+aliases:
+  - getting-started
 ---
-Welcome to Astro Modular! This quick start guide will get your blog running in minutes. Choose your preferred workflow [below](posts/getting-started.md#Choose%20Your%20Workflow).
+
+Welcome to Astro Modular! This quick start guide will get your blog running in minutes. Choose your preferred workflow [below](hello-world.md#Choose%20Your%20Workflow).
 
 ## Prerequisites & Installation
 

@@ -1,7 +1,7 @@
 {
   "runWizardOnStartup": true,
-  "currentTemplate": "standard",
-  "currentTheme": "oxygen",
+  "currentTemplate": "compact",
+  "currentTheme": "rose-pine",
   "customThemeFile": "custom",
   "contentOrganization": "file-based",
   "themeColors": {
@@ -12,10 +12,10 @@
     }
   },
   "siteInfo": {
-    "site": "https://astro-modular.netlify.app",
-    "title": "Astro Modular",
-    "description": "A flexible blog theme designed for Obsidian users.",
-    "author": "David V. Kimball",
+    "site": "https://timely-cajeta-81a81d.netlify.app/",
+    "title": "The Console Log",
+    "description": "A record of CS studies, backend development, and the transition to software engineering.",
+    "author": "Kirsty ",
     "language": "en",
     "faviconThemeAdaptive": true,
     "defaultOgImageAlt": "Astro Modular logo."
@@ -25,7 +25,7 @@
   },
   "tableOfContents": {
     "enabled": true,
-    "depth": 4
+    "depth": 2
   },
   "footer": {
     "enabled": true,
@@ -49,20 +49,6 @@
         "url": "/projects/"
       },
       {
-        "title": "Docs",
-        "url": "/docs/"
-      },
-      {
-        "title": "About",
-        "url": "/about/",
-        "children": [
-          {
-            "title": "Privacy Policy",
-            "url": "/privacy-policy/"
-          }
-        ]
-      },
-      {
         "title": "GitHub",
         "url": "https://github.com/davidvkimball/astro-modular"
       }
@@ -70,13 +56,18 @@
     "social": [
       {
         "title": "X",
-        "url": "https://x.com/davidvkimball",
+        "url": "https://x.com/km_fsdev",
         "icon": "x-twitter"
       },
       {
         "title": "GitHub",
-        "url": "https://github.com/davidvkimball",
+        "url": "https://github.com/ofthewildfire",
         "icon": "github"
+      },
+      {
+        "title": "New Social",
+        "url": "https://example.com",
+        "icon": ""
       }
     ]
   },
@@ -98,7 +89,7 @@
     "quickActions": {
       "enabled": true,
       "toggleMode": true,
-      "graphView": true,
+      "graphView": false,
       "changeTheme": true
     }
   },
@@ -131,10 +122,10 @@
     "tags": true,
     "linkedMentions": {
       "enabled": true,
-      "linkedMentionsCompact": false
+      "linkedMentionsCompact": true
     },
     "graphView": {
-      "enabled": true,
+      "enabled": false,
       "showInSidebar": true,
       "maxNodes": 100,
       "showOrphanedPosts": true
@@ -165,28 +156,25 @@
     "commandPalette": true,
     "readingTime": true,
     "linkedMentions": true,
-    "linkedMentionsCompact": false,
-    "graphView": true,
+    "linkedMentionsCompact": true,
+    "graphView": false,
     "postNavigation": true,
     "hideScrollBar": false,
     "scrollToTop": true,
-    "showSocialIconsInFooter": true,
+    "showSocialIconsInFooter": false,
     "profilePicture": false,
     "comments": false,
-    "featureButton": "mode",
-    "showPostCardCoverImages": "featured-and-posts",
-    "postCardAspectRatio": "og",
-    "customPostCardAspectRatio": "2.5/1",
+    "featureButton": "none",
     "quickActions": {
       "enabled": true,
       "toggleMode": true,
-      "graphView": true,
+      "graphView": false,
       "changeTheme": true
     }
   },
   "typography": {
-    "headingFont": "Inter",
-    "proseFont": "Inter",
+    "headingFont": "Playfair Display",
+    "proseFont": "Libre Baskerville",
     "monoFont": "JetBrains Mono",
     "fontSource": "local",
     "fontDisplay": "swap",
@@ -243,8 +231,8 @@
     }
   },
   "optionalContentTypes": {
-    "projects": true,
-    "docs": true
+    "projects": false,
+    "docs": false
   },
   "availableThemes": "default",
   "customThemes": "",
