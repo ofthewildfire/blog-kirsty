@@ -201,7 +201,7 @@ export const siteConfig: SiteConfig = {
 
   // Global Settings
   // [CONFIG:THEME]
-  theme: "rose-pine", // Available themes: "minimal" | "oxygen" | "atom" | "ayu" | "catppuccin" | "charcoal" | "dracula" | "everforest" | "flexoki" | "gruvbox" | "macos" | "nord" | "obsidian" | "rose-pine" | "sky" | "solarized" | "things" | "custom"
+  theme: "everforest", // Available themes: "minimal" | "oxygen" | "atom" | "ayu" | "catppuccin" | "charcoal" | "dracula" | "everforest" | "flexoki" | "gruvbox" | "macos" | "nord" | "obsidian" | "rose-pine" | "sky" | "solarized" | "things" | "custom"
   // [CONFIG:CUSTOM_THEME_FILE]
   customThemeFile: "custom", // Only used if theme is set to "custom" above. Filename in src/themes/custom/ (without .ts extension)
   // [CONFIG:AVAILABLE_THEMES]
@@ -211,9 +211,9 @@ export const siteConfig: SiteConfig = {
     source: "local", // "local" for self-hosted @fontsource fonts, "cdn" for Google Fonts CDN
     families: {
       // [CONFIG:FONT_BODY]
-      body: "Libre Baskerville",      // Body text font family
+      body: "Inter",      // Body text font family
       // [CONFIG:FONT_HEADING]
-      heading: "Playfair Display",   // Heading font family  
+      heading: "Inter",   // Heading font family  
       // [CONFIG:FONT_MONO]
       mono: "JetBrains Mono", // Monospace font family
     },
@@ -222,13 +222,13 @@ export const siteConfig: SiteConfig = {
   },
   layout: {
     // [CONFIG:LAYOUT_CONTENT_WIDTH]
-    contentWidth: "42rem",
+    contentWidth: "45rem",
   },
   tableOfContents: {
     // [CONFIG:TABLE_OF_CONTENTS_ENABLED]
     enabled: true,
     // [CONFIG:TABLE_OF_CONTENTS_DEPTH]
-    depth: 2, // Maximum heading depth to include in ToC (2-6, where 2=H2, 3=H3, etc.)
+    depth: 4, // Maximum heading depth to include in ToC (2-6, where 2=H2, 3=H3, etc.)
   },
   footer: {
     // [CONFIG:FOOTER_ENABLED]
@@ -236,14 +236,14 @@ export const siteConfig: SiteConfig = {
     // [CONFIG:FOOTER_CONTENT]
     content: `© 2025 {author}. Built with the <a href="https://github.com/davidvkimball/astro-modular" target="_blank">Astro Modular</a> theme.`,
     // [CONFIG:FOOTER_SHOW_SOCIAL_ICONS]
-    showSocialIconsInFooter: false,
+    showSocialIconsInFooter: true,
   },
   //[CONFIG:HIDE_SCROLL_BAR]
   hideScrollBar: false,
   // [CONFIG:SCROLL_TO_TOP]
   scrollToTop: true,
   // [CONFIG:FEATURE_BUTTON]
-  featureButton: "none", // "mode" | "graph" | "theme" | "none"
+  featureButton: "mode", // "mode" | "graph" | "theme" | "none"
   deployment: {
     // [CONFIG:DEPLOYMENT_PLATFORM]
     platform: "netlify", // "netlify" | "vercel" | "github-pages" | "cloudflare-workers" - sets redirect configuration for the chosen platform (Cloudflare Workers uses Workers-compatible config)
@@ -271,7 +271,7 @@ export const siteConfig: SiteConfig = {
       // [CONFIG:COMMAND_PALETTE_SECTIONS_QUICK_ACTIONS]
       quickActions: true,
       // [CONFIG:COMMAND_PALETTE_SECTIONS_PAGES]
-      pages: false,
+      pages: true,
       // [CONFIG:COMMAND_PALETTE_SECTIONS_SOCIAL]
       social: true,
     },
@@ -310,7 +310,7 @@ export const siteConfig: SiteConfig = {
     // [CONFIG:NAVIGATION_SHOW_NAVIGATION]
     showNavigation: true,
     // [CONFIG:NAVIGATION_STYLE]
-    style: "minimal", // 'minimal' or 'traditional'
+    style: "traditional", // 'minimal' or 'traditional'
     // [CONFIG:NAVIGATION_SHOW_MOBILE_MENU]
     showMobileMenu: true,
     // [CONFIG:NAVIGATION_PAGES]
@@ -331,27 +331,22 @@ export const siteConfig: SiteConfig = {
         url: "https://github.com/ofthewildfire",
         icon: "github",
       },
-      {
-        title: "New Social",
-        url: "https://example.com",
-        icon: "",
-      },
     ],
   },
 
   // Optional Content Types - Enable/disable optional content sections (takes priority over homeOptions)
   optionalContentTypes: {
     // [CONFIG:OPTIONAL_CONTENT_TYPES_PROJECTS]
-    projects: false, // Enable projects section
+    projects: true, // Enable projects section
     // [CONFIG:OPTIONAL_CONTENT_TYPES_DOCS]
-    docs: false, // Enable documentation section
+    docs: true, // Enable documentation section
   },
 
   // Home Options
   homeOptions: {
     featuredPost: {
       // [CONFIG:HOME_OPTIONS_FEATURED_POST_ENABLED]
-      enabled: false, // Show featured post on homepage
+      enabled: true, // Show featured post on homepage
       // [CONFIG:HOME_OPTIONS_FEATURED_POST_TYPE]
       type: "latest", // "latest" or "featured"
       // [CONFIG:HOME_OPTIONS_FEATURED_POST_SLUG]
@@ -395,11 +390,11 @@ export const siteConfig: SiteConfig = {
       // [CONFIG:POST_OPTIONS_LINKED_MENTIONS_ENABLED]
       enabled: true,
       // [CONFIG:POST_OPTIONS_LINKED_MENTIONS_COMPACT]
-      linkedMentionsCompact: true,
+      linkedMentionsCompact: false,
     },
     graphView: {
       // [CONFIG:POST_OPTIONS_GRAPH_VIEW_ENABLED]
-      enabled: false,
+      enabled: true,
       // [CONFIG:POST_OPTIONS_GRAPH_VIEW_SHOW_IN_SIDEBAR]
       showInSidebar: true,
       // [CONFIG:POST_OPTIONS_GRAPH_VIEW_MAX_NODES]
@@ -410,9 +405,9 @@ export const siteConfig: SiteConfig = {
     // [CONFIG:POST_OPTIONS_POST_NAVIGATION]
     postNavigation: true,
     // [CONFIG:POST_OPTIONS_SHOW_POST_CARD_COVER_IMAGES]
-    showPostCardCoverImages: "posts", // "all" | "featured" | "home" | "posts" | "featured-and-posts" | "none"
+    showPostCardCoverImages: "featured-and-posts", // "all" | "featured" | "home" | "posts" | "featured-and-posts" | "none"
     // [CONFIG:POST_OPTIONS_POST_CARD_ASPECT_RATIO]
-    postCardAspectRatio: "custom", // "16:9" | "4:3" | "3:2" | "og" | "square" | "golden" | "custom"
+    postCardAspectRatio: "og", // "16:9" | "4:3" | "3:2" | "og" | "square" | "golden" | "custom"
     // [CONFIG:POST_OPTIONS_CUSTOM_POST_CARD_ASPECT_RATIO]
     customPostCardAspectRatio: "2.5/1", // Only used when postCardAspectRatio is "custom" (e.g., "2.5/1")
     comments: {

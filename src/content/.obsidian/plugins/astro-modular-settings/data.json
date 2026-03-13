@@ -1,7 +1,7 @@
 {
   "runWizardOnStartup": true,
-  "currentTemplate": "compact",
-  "currentTheme": "rose-pine",
+  "currentTemplate": "standard",
+  "currentTheme": "everforest",
   "customThemeFile": "custom",
   "contentOrganization": "file-based",
   "themeColors": {
@@ -25,7 +25,7 @@
   },
   "tableOfContents": {
     "enabled": true,
-    "depth": 2
+    "depth": 4
   },
   "footer": {
     "enabled": true,
@@ -63,11 +63,6 @@
         "title": "GitHub",
         "url": "https://github.com/ofthewildfire",
         "icon": "github"
-      },
-      {
-        "title": "New Social",
-        "url": "https://example.com",
-        "icon": ""
       }
     ]
   },
@@ -122,10 +117,10 @@
     "tags": true,
     "linkedMentions": {
       "enabled": true,
-      "linkedMentionsCompact": true
+      "linkedMentionsCompact": false
     },
     "graphView": {
-      "enabled": false,
+      "enabled": true,
       "showInSidebar": true,
       "maxNodes": 100,
       "showOrphanedPosts": true
@@ -156,15 +151,15 @@
     "commandPalette": true,
     "readingTime": true,
     "linkedMentions": true,
-    "linkedMentionsCompact": true,
-    "graphView": false,
+    "linkedMentionsCompact": false,
+    "graphView": true,
     "postNavigation": true,
     "hideScrollBar": false,
     "scrollToTop": true,
-    "showSocialIconsInFooter": false,
+    "showSocialIconsInFooter": true,
     "profilePicture": false,
     "comments": false,
-    "featureButton": "none",
+    "featureButton": "mode",
     "showPostCardCoverImages": "featured-and-posts",
     "postCardAspectRatio": "og",
     "customPostCardAspectRatio": "2.5/1",
@@ -176,8 +171,8 @@
     }
   },
   "typography": {
-    "headingFont": "Playfair Display",
-    "proseFont": "Libre Baskerville",
+    "headingFont": "Inter",
+    "proseFont": "Inter",
     "monoFont": "JetBrains Mono",
     "fontSource": "local",
     "fontDisplay": "swap",
@@ -234,8 +229,8 @@
     }
   },
   "optionalContentTypes": {
-    "projects": false,
-    "docs": false
+    "projects": true,
+    "docs": true
   },
   "availableThemes": "default",
   "customThemes": "",
