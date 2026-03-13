@@ -1,7 +1,7 @@
 ---
 title: Hello World 🌟
 date: 2026-03-13
-description: Quick start guide for Astro Modular - get your blog running in minutes.
+description: Introduction to my blog and my journey.
 tags:
   - setup
   - blog
@@ -23,3 +23,12 @@ I am community learning with all the wonderful resources online, particularly:
 
 - Laracasts 
 - Boot.dev 
+
+There are more, but these make up the core of where I learn because lean resources are better than scattered ones. 😜 
+
+Which means at the moment my current stack is: 
+
+- [Laravel](https://laravel.com/) 
+- [Python](https://docs.python.org/3/)
+- and because of boot.dev eventually looking at you [Go](https://go.dev/doc/)! 
+
