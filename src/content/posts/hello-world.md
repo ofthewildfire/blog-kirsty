@@ -11,7 +11,7 @@ imageOG: true
 hideCoverImage: false
 hideTOC: false
 targetKeyword: welcome to my blog and my journey to being a good developer
-draft: false
+draft: true
 aliases:
   - hello-world-woman
 ---
