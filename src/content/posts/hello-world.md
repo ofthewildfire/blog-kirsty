@@ -32,3 +32,8 @@ Which means at the moment my current stack is:
 - [Python](https://docs.python.org/3/)
 - and because of boot.dev eventually looking at you [Go](https://go.dev/doc/)! 
 
+This blog will be a space I share technical things and everything else, projects, ideas, milestones, all on my way to being a *killer full stack dev* - being killer is a requirement in the end. 😅
+
+Thanks for reading, 
+
+Kirsty
