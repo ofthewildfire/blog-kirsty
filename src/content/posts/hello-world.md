@@ -1,6 +1,6 @@
 ---
 title: Hello World 🌟
-date: 2025-09-06
+date: 2026-03-13
 description: Quick start guide for Astro Modular - get your blog running in minutes.
 tags:
   - setup
