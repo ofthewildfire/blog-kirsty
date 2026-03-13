@@ -201,8 +201,6 @@ Here's an [external link](https://obsidian.md).
 
 You can create internal links using double brackets (wikilinks) or with standard markdown. 
 
-For example: [[hello-world|Getting Started]] or [Astro Suite Obsidian Vault Guide (Astro Modular)](vault-cms-guide.md).
-
 ```markdown
 For example: [[getting-started|Getting Started]] or [Obsidian Embeds Demo](obsidian-embeds-demo).
 ```
