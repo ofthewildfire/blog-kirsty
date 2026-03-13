@@ -18,3 +18,8 @@ aliases:
 Hi world! 👾 
 
 I am yet another girl on the internet learning to code and having fun. 
+
+I am community learning with all the wonderful resources online, particularly: 
+
+- Laracasts 
+- Boot.dev 
