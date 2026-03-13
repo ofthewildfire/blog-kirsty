@@ -5,7 +5,7 @@ description: Introduction to my blog and my journey.
 tags:
   - setup
   - blog
-image: "[[attachments/sunset.png]]"
+image: "[[attachments/1773396102.png]]"
 imageAlt: Sunset skyline.
 imageOG: true
 hideCoverImage: false
@@ -21,8 +21,8 @@ I am yet another girl on the internet learning to code and having fun.
 
 I am community learning with all the wonderful resources online, particularly: 
 
-- Laracasts 
-- Boot.dev 
+- [Laracasts](https://laracasts.com) 
+- [Boot.dev](https://www.boot.dev?bannerlord=fuascailt)
 
 There are more, but these make up the core of where I learn because lean resources are better than scattered ones. 😜 
 
