@@ -183,7 +183,7 @@ export interface SiteConfig {
 export const siteConfig: SiteConfig = {
   // Site Information
   // [CONFIG:SITE_URL]
-  site: "https://timely-cajeta-81a81d.netlify.app/",
+  site: "https://blog.kirstyconsole.dev",
   // [CONFIG:SITE_TITLE]
   title: "The Console Log",
   // [CONFIG:HOMEPAGE_TITLE]
@@ -281,7 +281,7 @@ export const siteConfig: SiteConfig = {
       // [CONFIG:COMMAND_PALETTE_QUICK_ACTIONS_TOGGLE_MODE]
       toggleMode: true,
       // [CONFIG:COMMAND_PALETTE_QUICK_ACTIONS_GRAPH_VIEW]
-      graphView: false,
+      graphView: true,
       // [CONFIG:COMMAND_PALETTE_QUICK_ACTIONS_CHANGE_THEME]
       changeTheme: true,
     },

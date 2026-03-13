@@ -12,7 +12,7 @@
     }
   },
   "siteInfo": {
-    "site": "https://timely-cajeta-81a81d.netlify.app/",
+    "site": "https://blog.kirstyconsole.dev",
     "title": "The Console Log",
     "description": "A record of CS studies, backend development, and the transition to software engineering.",
     "author": "Kirsty ",
@@ -89,7 +89,7 @@
     "quickActions": {
       "enabled": true,
       "toggleMode": true,
-      "graphView": false,
+      "graphView": true,
       "changeTheme": true
     }
   },
@@ -165,10 +165,13 @@
     "profilePicture": false,
     "comments": false,
     "featureButton": "none",
+    "showPostCardCoverImages": "featured-and-posts",
+    "postCardAspectRatio": "og",
+    "customPostCardAspectRatio": "2.5/1",
     "quickActions": {
       "enabled": true,
       "toggleMode": true,
-      "graphView": false,
+      "graphView": true,
       "changeTheme": true
     }
   },
